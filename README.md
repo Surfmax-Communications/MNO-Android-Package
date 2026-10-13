@@ -87,8 +87,8 @@ android {
 }
 
 dependencies {
-    implementation 'com.surfmaxcomm:liveness_android_data:1.0-3'
-    implementation 'com.surfmaxcomm:liveness_android_core:1.0-3'
+    implementation 'com.surfmaxcomm:liveness_android_data:1.0-4'
+    implementation 'com.surfmaxcomm:liveness_android_core:1.0-4'
 }
 ```
 
@@ -184,7 +184,7 @@ new SurfmaxLiveness.SurfmaxLivenessDetectionOnlyBuilder(activity)
         .setAppName("your-app-name")
         .setLivenessType(LivenessDetectionOnlyType.ACTIVE)  // ACTIVE, PASSIVE, or FLASH
         .setCameraType(CameraType.FRONT)                    // FRONT or REAR
-        .setIsDev(false)                                    // true for sandbox/dev environment
+        .setIsSandbox(false)                                    // true for sandbox/prod environment
         .setShowLivenessResult(true)                        // show SDK result screen after check
         .setStartProcessOnGettingToFirstScreen(false)       // auto-start on screen load
         .setDeviceMetadataConfig(new DeviceMetadataConfig.Builder()
@@ -248,7 +248,7 @@ new SurfmaxLiveness.SurfmaxLivenessFacialComparisonBuilder(activity)
         .setImageByte(referenceImageBytes)                  // reference face image as byte[]
         .setLivenessType(LivenessFacialComparisonType.ACTIVE) // ACTIVE or PASSIVE
         .setCameraType(CameraType.FRONT)                    // FRONT or REAR
-        .setIsDev(false)
+        .setIsSandbox(false)
         .setShowLivenessResult(true)
         .setStartProcessOnGettingToFirstScreen(false)
         .setThresholdConfig(new ThresholdConfig.Builder()
@@ -328,17 +328,17 @@ button.setOnClickListener(v -> imagePickerLauncher.launch("image/*"));
 
 ### Common options (both builders)
 
-| Method | Type | Required | Description |
-|--------|------|----------|-------------|
-| `setClientId(String)` | `String` | Yes | Your Surfmax client ID |
-| `setApiKey(String)` | `String` | Yes | Your Surfmax API key |
-| `setAppName(String)` | `String` | Yes | Your registered app name |
-| `setCameraType(CameraType)` | `CameraType` | No | `FRONT` (default) or `REAR` |
-| `setIsDev(boolean)` | `boolean` | No | `true` for sandbox, `false` for production |
-| `setShowLivenessResult(boolean)` | `boolean` | No | Show the SDK's built-in result screen |
+| Method                                           | Type | Required | Description |
+|--------------------------------------------------|------|----------|-------------|
+| `setClientId(String)`                            | `String` | Yes | Your Surfmax client ID |
+| `setApiKey(String)`                              | `String` | Yes | Your Surfmax API key |
+| `setAppName(String)`                             | `String` | Yes | Your registered app name |
+| `setCameraType(CameraType)`                      | `CameraType` | No | `FRONT` (default) or `REAR` |
+| `setIsSandbox(boolean)`                          | `boolean` | No | `true` for sandbox, `false` for production |
+| `setShowLivenessResult(boolean)`                 | `boolean` | No | Show the SDK's built-in result screen |
 | `setStartProcessOnGettingToFirstScreen(boolean)` | `boolean` | No | Auto-start capture on first screen |
-| `setDeviceMetadataConfig(DeviceMetadataConfig)` | `DeviceMetadataConfig` | No | Configure device ID and location collection |
-| `setListener(LivenessCompletedCallBack)` | callback | Yes | Success/failure callbacks |
+| `setDeviceMetadataConfig(DeviceMetadataConfig)`  | `DeviceMetadataConfig` | No | Configure device ID and location collection |
+| `setListener(LivenessCompletedCallBack)`         | callback | Yes | Success/failure callbacks |
 
 ### Detection-only options
 
