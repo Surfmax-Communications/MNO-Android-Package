@@ -87,8 +87,8 @@ android {
 }
 
 dependencies {
-    implementation 'com.surfmaxcomm:liveness_android_data:1.0-4'
-    implementation 'com.surfmaxcomm:liveness_android_core:1.0-4'
+    implementation 'com.surfmaxcomm:mno_liveness_android_data:1.0-4'
+    implementation 'com.surfmaxcomm:mno_liveness_android_core:1.0-4'
 }
 ```
 
