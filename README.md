@@ -87,8 +87,13 @@ android {
 }
 
 dependencies {
-    implementation 'com.surfmax:mno_liveness_android_data:1.0-4'
-    implementation 'com.surfmax:mno_liveness_android_core:1.0-4'
+implementation('com.surfmax.com.surfmax.mno_liveness_android_core:1.0-4’) {
+    exclude group: 'org.bouncycastle', module: 'bcprov-jdk15on'
+  }
+
+implementation('com.surfmax.mno_liveness_android_data:1.0-4’) {
+    exclude group: 'org.bouncycastle', module: 'bcprov-jdk15on'
+  }
 }
 ```
 
