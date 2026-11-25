@@ -30,19 +30,8 @@ Runs liveness detection and then compares the captured face against a provided r
 ---
 
 ## Installation
-
-### Step 1 — GitHub credentials
-
-Create a `github.properties` file in the root of your Android project (do **not** commit this file):
-
-```properties
-USERNAME_GITHUB=YourGitHubUsername
-TOKEN_GITHUB=YourClassicPersonalAccessToken
-```
-
-The token needs at minimum: `read:packages`.
-
-### Step 2 — Project-level `build.gradle`
+ 
+### Step 1 — Project-level `build.gradle`
 
 ```gradle
 buildscript {
@@ -55,26 +44,14 @@ buildscript {
 }
 
 allprojects {
-    def githubPropertiesFile = rootProject.file("github.properties")
-    def githubProperties = new Properties()
-    githubProperties.load(new FileInputStream(githubPropertiesFile))
-
     repositories {
         google()
         mavenCentral()
-        maven {
-            name "GitHubPackages"
-            url 'https://maven.pkg.github.com/Surfmax-Communications/MNO-Android-Package'
-            credentials {
-                username githubProperties['USERNAME_GITHUB']
-                password githubProperties['TOKEN_GITHUB']
-            }
-        }
     }
 }
 ```
 
-### Step 3 — App-level `build.gradle`
+### Step 2 — App-level `build.gradle`
 
 Minimum SDK version is **24**.
 
@@ -87,17 +64,17 @@ android {
 }
 
 dependencies {
-implementation('com.surfmax.com.surfmax.mno_liveness_android_core:1.0-4’) {
+implementation('com.surfmax.com.surfmax.mno_liveness_android_core:1.0-1’) {
     exclude group: 'org.bouncycastle', module: 'bcprov-jdk15on'
   }
 
-implementation('com.surfmax.mno_liveness_android_data:1.0-4’) {
+implementation('com.surfmax.mno_liveness_android_data:1.0-1’) {
     exclude group: 'org.bouncycastle', module: 'bcprov-jdk15on'
   }
 }
 ```
 
-### Step 4 — AndroidManifest.xml
+### Step 3 — AndroidManifest.xml
 
 Add all required permissions and hardware features:
 
@@ -144,7 +121,7 @@ Add all required permissions and hardware features:
 </application>
 ```
 
-### Step 5 — ProGuard (if minification is enabled)
+### Step 4 — ProGuard (if minification is enabled)
 
 Add to `proguard-rules.pro`:
 
